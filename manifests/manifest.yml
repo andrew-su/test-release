@@ -28,6 +28,7 @@ instance_groups:
   stemcell: default
   vm_type: default
 - name: consumer_ig
+  lifecycle: errand
   azs:
   - z1
   instances: 1
@@ -36,7 +37,6 @@ instance_groups:
     properties: {}
     consumes:
       provider: { from: provider, deployment: test_dep }
-  lifecycle: errand
   networks:
   - name: default
   stemcell: default
