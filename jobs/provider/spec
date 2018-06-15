@@ -1,0 +1,17 @@
+---
+name: provider
+
+provides:
+- name: provider
+  type: provider
+  properties:
+  - foo
+
+consumes:
+- name: provider
+  type: provider
+  optional: true
+
+properties:
+  foo:
+    description: "Some description"

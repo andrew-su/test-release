@@ -1,0 +1,13 @@
+name: test
+version: 0+dev.1
+commit_hash: 478255b
+uncommitted_changes: false
+jobs:
+- name: consumer
+  version: 3fc08c0c9faab509767bc88f12d748183b5362ae
+  fingerprint: 3fc08c0c9faab509767bc88f12d748183b5362ae
+  sha1: 5ed780f645be64f16a37f4accfed38bd3496d45f
+- name: provider
+  version: 789db99208806f6fc4c5c55bd7ba2ddb1bf5b065
+  fingerprint: 789db99208806f6fc4c5c55bd7ba2ddb1bf5b065
+  sha1: 6237f27fca6cb5b4808cf5eb740393f01c8e1e1d

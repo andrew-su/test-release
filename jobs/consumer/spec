@@ -1,0 +1,7 @@
+---
+name: consumer
+
+consumes:
+- name: provider
+  type: provider
+  optional: true
