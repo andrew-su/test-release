@@ -1,0 +1,38 @@
+# This deploy should fail (265.x)
+
+---
+name: test_dep
+
+releases:
+- name: test
+  version: latest
+
+stemcells:
+- alias: default
+  os: ubuntu-trusty
+  version: latest
+
+instance_groups:
+- name: provider_ig
+  lifecycle: errand
+  azs:
+  - z1
+  instances: 1
+  jobs:
+  - name: provider
+    properties:
+      a: hi
+    provides:
+      provider: {as: provider}
+    consumes:
+      provider: {from: provider, deployment: test_dep, shared: true}
+  networks:
+  - name: default
+  stemcell: default
+  vm_type: default
+
+update:
+  canaries: 2
+  canary_watch_time: 5000-60000
+  max_in_flight: 1
+  update_watch_time: 5000-60000
