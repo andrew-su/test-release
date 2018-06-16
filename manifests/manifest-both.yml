@@ -1,0 +1,49 @@
+---
+name: test_dep
+
+releases:
+- name: test
+  version: latest
+
+stemcells:
+- alias: default
+  os: ubuntu-trusty
+  version: latest
+
+instance_groups:
+- name: provider_ig
+  azs:
+  - z1
+  instances: 1
+  jobs:
+  - name: both
+    properties:
+      a: hi
+    provides:
+      both: {as: both-provider}
+    consumes:
+      both: {from: both-provider, deployment: test_dep}
+  networks:
+  - name: default
+  stemcell: default
+  vm_type: default
+- name: consumer_ig
+  lifecycle: errand
+  azs:
+  - z1
+  instances: 1
+  jobs:
+  - name: both
+    properties: {}
+    consumes:
+      both: {from: both-provider, deployment: test_dep}
+  networks:
+  - name: default
+  stemcell: default
+  vm_type: default
+
+update:
+  canaries: 2
+  canary_watch_time: 5000-60000
+  max_in_flight: 1
+  update_watch_time: 5000-60000
