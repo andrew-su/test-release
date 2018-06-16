@@ -1,0 +1,14 @@
+---
+name: both
+
+templates:
+  test.json.erb: config/test.json
+
+consumes:
+- name: both
+  type: both
+  optional: true
+
+provides:
+- name: both
+  type: both

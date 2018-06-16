@@ -1,0 +1,10 @@
+<%=
+  if_link('both') do
+    both_link = link('both')
+    ips = both_link.instances.map { |instance| instance.address }
+    config = {
+      IPs: ips.map {|ip| "http://#{ip}" },
+    }
+    JSON.pretty_generate(config)
+  end
+%>
