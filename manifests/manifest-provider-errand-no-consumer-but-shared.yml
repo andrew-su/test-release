@@ -23,9 +23,9 @@ instance_groups:
     properties:
       a: hi
     provides:
-      provider: {as: provider}
+      provider: {as: provider, shared: true}
     consumes:
-      provider: {from: provider, deployment: test_dep, shared: true}
+      provider: {from: provider, deployment: test_dep}
   networks:
   - name: default
   stemcell: default
